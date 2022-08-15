@@ -15,3 +15,4 @@ PRIMARY KEY (id)
 ALTER TABLE Company ADD number VARCHAR (12);
 ** Теперь удалю этот столбец
 ALTER TABLE Company DROP COLUMN number;
+** Ожидается дополнение файла
