@@ -11,3 +11,7 @@ CREATE TABLE Company(
              birth DATE,
 PRIMARY KEY (id)
 ); 
+** Забыл добавить столбец с номерами телефонов
+ALTER TABLE Company ADD number VARCHAR (12);
+** Теперь удалю этот столбец
+ALTER TABLE Company DROP COLUMN number;
