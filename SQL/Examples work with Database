@@ -11,8 +11,17 @@ CREATE TABLE Company(
              birth DATE,
 PRIMARY KEY (id)
 ); 
-** Забыл добавить столбец с номерами телефонов
+** Добавляем столбец
 ALTER TABLE Company ADD number VARCHAR (12);
 ** Теперь удалю этот столбец
 ALTER TABLE Company DROP COLUMN number;
-** Ожидается дополнение файла
+** Далее добавим значения в таблицы
+INSERT INTO Company (birth, email, job, name) VALUES ('1998-08-03', 'roman@gmail.com', 'QA Engineer', 'Roman')
+ALTER TABLE Company CHANGE birth birth DATE NOT NULL;
+INSERT INTO Company (birth, email, job, name) 
+VALUES
+            ('1998-07-03', 'ts@mail.ru', 'Go dev', 'Eugene'),
+            ('1998-06-03', 'ts1@mail.ru', 'Java dev', 'Tanita'),
+            ('1998-05-03', 'ts2@mail.ru', 'Python dev', 'Igor');
+UPDATE Company SET name = 'Alena' WHERE id=3 AND job = 'Java dev'; 
+** Ожидается дополнение кода
