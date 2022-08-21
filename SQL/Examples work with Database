@@ -46,3 +46,9 @@ SELECT * FROM `Company` ORDER BY birth;
 *** В итоге получим сортировку по возрастанию даты рождения
 SELECT * FROM `Company` ORDER BY birth DESC;
 *** Сортировка на уменьшение
+SELECT * FROM `Company` WHERE id BETWEEN 2 AND 4 AND  id <> 3 ORDER BY id DESC LIMIT 5
+*** Тут мы выведем результат согласно сложному условию где id МЕЖДУ 2 и 4 и не равно 3 и отсортируем на уменьшение с лимитом
+SELECT * FROM `Company` WHERE id IN (2, 3, 4) ORDER BY id DESC LIMIT 5
+*** IN для вывода по условию содержания этих номеров
+SELECT * FROM `Company` WHERE name LIKE 'Iv%';
+*** Вывод всех значений где имя содержит Iv, знак % корректирует откуда мы будем искать содержание введенного текста "%а" - окончание на а, "%ТУТ%" слово ТУТ внутри конструкции
