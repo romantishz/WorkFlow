@@ -24,4 +24,25 @@ VALUES
             ('1998-06-03', 'ts1@mail.ru', 'Java dev', 'Tanita'),
             ('1998-05-03', 'ts2@mail.ru', 'Python dev', 'Igor');
 UPDATE Company SET name = 'Alena' WHERE id=3 AND job = 'Java dev'; 
-** Ожидается дополнение кода
+SELECT * FROM `Company`;
+SELECT `id`, `name` FROM `Company` WHERE id>1 AND id<4;
+*** Увидим вывод строки со столбцами id and name подходящим по заданному условию итог Alena and Eugene
+SELECT * FROM `Company` WHERE id<>3;
+*** В итоге мы через Select выбрали вывод всех значений по значению id не равному 3
+SELECT * FROM `Company` WHERE id<>3 AND id <> 2;
+UPDATE Company SET job='NULL' WHERE job='Python dev';
+SELECT * FROM `Company` WHERE id >=4 AND job IS NULL;
+SELECT * FROM `Company` WHERE id >=2 OR name='Ivan';
+*** В итоге получим все значения подходящие по одному из условий id>=2 ИЛИ имя=Иван
+SELECT DISTINCT name FROM Company;
+*** Демонстрации выборки данных по полю (Данные не повторяются)
+SELECT * FROM `Company` LIMIT 2;
+*** Вывод только 2 строк
+SELECT * FROM `Company` LIMIT 2,3;
+*** Вывод 3-х строк с пропуском первых двух
+SELECT * FROM `Company` ORDER BY id LIMIT 2,3;
+*** Сортировка id по возрастанию
+SELECT * FROM `Company` ORDER BY birth;
+*** В итоге получим сортировку по возрастанию даты рождения
+SELECT * FROM `Company` ORDER BY birth DESC;
+*** Сортировка на уменьшение
