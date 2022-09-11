@@ -52,3 +52,26 @@ SELECT * FROM `Company` WHERE id IN (2, 3, 4) ORDER BY id DESC LIMIT 5
 *** IN для вывода по условию содержания этих номеров
 SELECT * FROM `Company` WHERE name LIKE 'Iv%';
 *** Вывод всех значений где имя содержит Iv, знак % корректирует откуда мы будем искать содержание введенного текста "%а" - окончание на а, "%ТУТ%" слово ТУТ внутри конструкции
+*** Создадим индекс на столбец Name 
+CREATE INDEX NIndex ON Company (name); 
+*** Если хотим удалить Index
+DROP INDEX NIndex ON Company;
+*** Создадим новую таблицу для показа связи и ссылок 
+CREATE TABLE shop (
+              id INT NOT NULL AUTO_INCREMENT,
+              title VARCHAR (100),
+              price INT,
+PRIMARY KEY (id)
+);
+*** Создаем еще одну
+CREATE TABLE orders (
+              id INT NOT NULL AUTO_INCREMENT,
+              orderNum INT,
+              shopID INT,
+              personID INT,
+              date_time DATETIME DEFAULT CURRENT_TIMESTAMP, 
+PRIMARY KEY (id),
+FOREIGN KEY (shopID) REFERENCES shop (id),
+FOREIGN KEY (personID) REFERENCES Company (id)
+);
+*** Строка 74 и 75 обозначают что shopId связан id в таблице shop, personID так же
