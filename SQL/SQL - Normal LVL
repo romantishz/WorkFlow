@@ -1,0 +1,13 @@
+26.	Необходимо рассчитать за 2021 год по всем региональным отделам (с названием «Представительство») отгрузку по регионам. Вывести Отдел, Регион отгрузки, количество мест, сумму отгрузки.
+
+SELECT divisiontitle,regiontitle,COUNT(BoxNo) Mesto,SUM(OrdSumdoc) Dengi
+FROM tblOrders os 
+JOIN tblOrdListBoxes ob ON ob.OrdListID=os.OrdListID
+JOIN tblCustomers cus ON cus.CustomerID=os.CustomerID
+JOIN tblDivisions dv ON dv.DivisionID=cus.DivisionID
+JOIN tblCustAddress cm ON cm.CustomerID=cus.CustomerID
+JOIN tblAddrRegions ar ON cm.RegionCode=ar.RegionCode
+WHERE OrderDate BETWEEN '20210101' AND '20211231' and os.StockID=1  AND os.OrdTypeID=1 AND os.OrdStateID >= 7 and ParentDivisionID IN (28)
+GROUP BY divisiontitle,regiontitle
+
+
