@@ -11,3 +11,18 @@ WHERE OrderDate BETWEEN '20210101' AND '20211231' and os.StockID=1  AND os.OrdTy
 GROUP BY divisiontitle,regiontitle
 
 
+Пример типичного отчёта (Необходимо вывести:Код ЛП,NAME,DATE,Номер заказа,Кол-во,Сумма,Вес,Объём)
+В задаче потребуется округление до метров кубических при том что в базе размеры указанны в милиметрах, отдельно запрос параметры для округления:
+(cast(v.Height as decimal)*cast(v.Length as decimal)*cast(v.Width as decimal)/1000000000*v.CountInBox)*ims.DrugCount
+
+Запрос:
+
+select gs.Goodsid Код , Drugformtitle Наименование, OrderDate Дата, os.OrderID Номер,ims.DrugCount Колво, OrdSumdoc Сумма , sum(v.Weight*ims.DrugCount) Вес,(cast(v.Height as decimal)*cast(v.Length as decimal)*cast(v.Width as decimal)/1000000000*v.CountInBox)*ims.DrugCount  Объём
+from tblOrders os
+JOIN tblorderitems ims ON ims.orderid=os.orderid
+JOIN tblinvitems iv ON iv.invitemid=ims.invitemid
+JOIN vwgoods gs ON gs.goodsid=iv.goodsid
+JOIN tblGoodsItemVolumes v ON v.goodsid=gs.goodsid
+WHERE Os.StockID = 1 and Os.OrdTypeID in (1, 3) and Os.OrdStateID in (7, 10) and os.orderdate BETWEEN '20230401' AND '20230630'
+GROUP BY gs.Goodsid , Drugformtitle, OrderDate , os.OrderID ,ims.DrugCount , OrdSumdoc  , v.Weight ,(cast(v.Height as decimal)*cast(v.Length as decimal)*cast(v.Width as decimal)/1000000000*v.CountInBox)*ims.DrugCount
+
