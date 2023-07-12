@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "901db2c0-9b81-4a9a-9ae1-674cb371a800",
+		"name": "Честный знак",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27259397"
+	},
+	"item": [
+		{
+			"name": "Информация о КиЗ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "POST api/v1/reestr/sgtin/sgtins-by-list HTTP/1.1\r\nHost: api.sb.mdlp.crpt.ru\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: Тут будет токен после этапов аутентификации и авторизации\r\n{\r\n  \"filter\": {\r\n  \"sgtins\": [\r\n  \"Сюда SGTIN\"\r\n  ]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.sb.mdlp.crpt.ru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sb",
+						"mdlp",
+						"crpt",
+						"ru"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Информация о КиЗ (содержит эмитированные)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "POST api/v1/reestr/sgtin/public/sgtins-by-list HTTP/1.1\r\nHost: api.sb.mdlp.crpt.ru\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: \r\n{\r\n  \"filter\": {\r\n  \"sgtins\": [\r\n  \"GTIN\",\r\n  \"SN\"\r\n  ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.sb.mdlp.crpt.ru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sb",
+						"mdlp",
+						"crpt",
+						"ru"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Информация о архивных КИЗ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "POST api/v1/reestr/sgtin/public/archive/sgtins-by-list HTTP/1.1\r\nHost: api.sb.mdlp.crpt.ru\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization:\r\n{\r\n  \"filter\": {\r\n  \"sgtins\": [\r\n  \"GTIN\",\r\n  \"SN\"\r\n  ]\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.sb.mdlp.crpt.ru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sb",
+						"mdlp",
+						"crpt",
+						"ru"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Метод для поиска по реестру КИЗ записей для вывода из оборота по чеку от контрольно-кассовой техники (ККТ)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "POST api/v1/reestr/sgtin/kkt/awaiting-withdrawal/filter HTTP/1.1\r\nHost: api.sb.mdlp.crpt.ru\r\nAccept: application/json\r\nContent-Type: application/json\r\nAuthorization: token \r\n{\r\n  \"filter\": {\r\n  \"branch_id\": \"12345678901234\",\r\n  \"sgtin\": \"04620032570010TRACKING00000\",\r\n  \"has_violations\": true,\r\n  \"op_start_date\": \"2019-04-07\",\r\n  \"op_end_date\": \"2019-04-07\"\r\n  },\r\n  \"start_from\": 0,\r\n  \"count\": 10\r\n}"
+				},
+				"url": {
+					"raw": "https://api.sb.mdlp.crpt.ru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sb",
+						"mdlp",
+						"crpt",
+						"ru"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Метод для получения информации о пользователе",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "GET api/v1/users/userID HTTP/1.1\r\nHost: api.sb.mdlp.crpt.ru\r\nAccept: application/json\r\nAuthorization: token ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.sb.mdlp.crpt.ru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sb",
+						"mdlp",
+						"crpt",
+						"ru"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение информации о конкретном месте осуществления деятельности",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "GET api/v1/reestr/branches/ID места деятельности HTTP/1.1\r\nHost: api.sb.mdlp.crpt.ru\r\nAccept: application/json\r\nAuthorization: token \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.sb.mdlp.crpt.ru",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sb",
+						"mdlp",
+						"crpt",
+						"ru"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
