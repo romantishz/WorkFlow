@@ -1,0 +1,11 @@
+<documents version="1.37">
+    <refusal_sender action_id="251">
+        <subject_id>00000000190181</subject_id>
+        <operation_date>2023-05-30T17:14:23+03:00</operation_date>
+        <receiver_id>0000</receiver_id>
+        <reason>Возврат</reason>
+        <order_details>
+            <sgtin>000</sgtin>
+        </order_details>
+    </refusal_sender>
+</documents>
