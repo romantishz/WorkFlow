@@ -1,0 +1,23 @@
+<documents version="1.37">
+    <posting action_id="702">
+        <subject_id></subject_id>
+        <shipper_info>
+            <inn></inn>
+            <kpp></kpp>
+        </shipper_info>
+        <operation_date>2023-05-26T13:01:50+03:00</operation_date>
+        <doc_num></doc_num>
+        <doc_date>23.05.2023</doc_date>
+        <receive_type>2</receive_type>
+        <contract_type>1</contract_type>
+        <source>4</source>
+        <contract_num></contract_num> 
+        <order_details>
+            <union>
+                <sgtin></sgtin>
+                <cost></cost>
+                <vat_value></vat_value>
+            </union>
+        </order_details>
+    </posting>
+</documents>
