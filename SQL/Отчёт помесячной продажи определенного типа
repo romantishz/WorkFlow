@@ -1,0 +1,22 @@
+Необходимо вывести
+ИНН	Холдинг	Контрагент	Грузополучатель	Населенный пункт	Дата	Накладная	Сумма	Вес	Объем	Маршрут	Маржа
+
+Set Language Russian
+select DISTINCT cas.INN ИНН, Holdingtitle Холдинг,ContractorTitle Контрагент, CustomerCorp Грузополучатель,rr.RegionTitle Регион,os.OrderDate Дата,os.OrderID Накладная,OrdSumDoc Сумма, sum(v.Weight*ims.DrugCount) Вес,SUM((cast(v.Height as decimal)*cast(v.Length as decimal)*cast(v.Width as decimal)/1000000000*v.CountInBox)*ims.DrugCount) Объём,RunWay Маршрут,OrderMarginPercent Маржа
+from tblOrders os
+JOIN tblorderitems ims ON ims.orderid=os.orderid
+JOIN tblCustomers ss ON ss.CustomerID=os.CustomerID
+JOIN tblContractors cas ON cas.ContractorID=ss.ContractorID
+JOIN tblCustAddress cus ON cus.CustomerID=ss.CustomerID
+JOIN tblAddrRegions rr ON rr.RegionCode=cus.RegionCode
+JOIN tblOrdLists ls ON ls.ListID=os.OrdListID
+JOIN tblOrdShips sh ON sh.OrdShipID=ls.OrdShipID
+JOIN tblHoldings hd on hd.HoldingID=cas.HoldingID
+JOIN tblinvitems iv ON iv.invitemid=ims.invitemid
+JOIN vwgoods gs ON gs.goodsid=iv.goodsid
+JOIN tblGoodsItemVolumes v ON v.goodsid=gs.goodsid
+JOIN tblDocs dc ON dc.OrderID=os.OrderID
+JOIN tblPaysDocEx e ON e.DocID=dc.DocID
+WHERE Os.StockID = 1 and Os.OrdTypeID in (1) and Os.OrdStateID in (7, 10) and os.orderdate BETWEEN '20230501' AND '20230719' AND cus.RegionCode IN (93,23) AND GoodsTypeID=3
+GROUP BY cas.INN, Holdingtitle,ContractorTitle , CustomerCorp,rr.RegionTitle,os.OrderDate,os.OrderID,OrdSumDoc,RunWay,OrderMarginPercent
+ORDER BY os.OrderDate
