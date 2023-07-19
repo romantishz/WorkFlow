@@ -1,0 +1,11 @@
+<documents version="1.37">
+    <accept action_id="701">
+        <subject_id></subject_id>
+        <counterparty_id></counterparty_id>
+        <operation_date>2023-05-23T12:20:53+03:00</operation_date>
+        <order_details>
+            <sgtin></sgtin>
+            <sscc></sscc>
+        </order_details>
+    </accept>
+</documents>
