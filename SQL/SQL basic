@@ -26,3 +26,9 @@ JOIN tblGoodsItemVolumes v ON v.goodsid=gs.goodsid
 WHERE Os.StockID = 1 and Os.OrdTypeID in (1, 3) and Os.OrdStateID in (7, 10) and os.orderdate BETWEEN '20230401' AND '20230630'
 GROUP BY gs.Goodsid , Drugformtitle, OrderDate , os.OrderID ,ims.DrugCount , OrdSumdoc  , v.Weight ,(cast(v.Height as decimal)*cast(v.Length as decimal)*cast(v.Width as decimal)/1000000000*v.CountInBox)*ims.DrugCount
 
+INSERT на основе данных SELECT 
+
+INSERT INTO dmw.OrdItemDM (OrdItemID,CodeID,ParentID,MDocID,MDocStatusID)
+Select 206956093,codeid,231973565,NULL,NULL
+from dmw.DataMatrixStorage 
+where ParentID=231973565
