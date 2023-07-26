@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<documents version="1.38">
+  <move_return action_id="417">
+    <subject_id>000</subject_id>
+    <receiver_id>000</receiver_id>
+    <operation_date>2023-07-25T17:39:01+03:00</operation_date>
+    <doc_num>52083173</doc_num>
+    <doc_date>25.07.2023</doc_date>
+    <order_details>
+        <sgtin></sgtin>
+    </order_details>
+  </move_return>
+</documents>
